@@ -23,6 +23,7 @@ import { Runner } from "./Runner/index";
 import { Runner_adjustDemisions } from "./Runner/adjustDemisions";
 import { Runner_setDisableRunner } from "./Runner/setDisableRunner";
 import { Runner_startListening } from "./Runner/startListening";
+import { Runner_onKeyDown } from "./Runner/onKeyDown";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -433,52 +434,7 @@ Runner.prototype = {
    * Process keydown.
    * @param {Event} e
    */
-  onKeyDown: function (e) {
-    // Prevent native page scrolling whilst tapping on mobile.
-    if (IS_MOBILE && this.playing) {
-      e.preventDefault();
-    }
-
-    if (e.target != this.detailsButton) {
-      if (
-        !this.crashed &&
-        (Runner.keycodes.JUMP[e.keyCode] || e.type == Runner.events.TOUCHSTART)
-      ) {
-        if (!this.playing) {
-          this.loadSounds();
-          this.playing = true;
-          this.update();
-          if (window.errorPageController) {
-            errorPageController.trackEasterEgg();
-          }
-        }
-        //  Play sound effect and jump on starting the game for the first time.
-        if (!this.tRex.jumping && !this.tRex.ducking) {
-          this.playSound(this.soundFx.BUTTON_PRESS);
-          this.tRex.startJump(this.currentSpeed);
-        }
-      }
-
-      if (
-        this.crashed &&
-        e.type == Runner.events.TOUCHSTART &&
-        e.currentTarget == this.containerEl
-      ) {
-        this.restart();
-      }
-    }
-
-    if (this.playing && !this.crashed && Runner.keycodes.DUCK[e.keyCode]) {
-      e.preventDefault();
-      if (this.tRex.jumping) {
-        // Speed drop, activated only when jump key is not pressed.
-        this.tRex.setSpeedDrop();
-      } else if (!this.tRex.jumping && !this.tRex.ducking) {
-        // Duck.
-        this.tRex.setDuck(true);
-      }
-    }
-  },
+  onKeyDown: Runner_onKeyDown,
 
   /**
    * Process key up.
