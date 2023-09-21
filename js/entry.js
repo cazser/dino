@@ -1,7 +1,7 @@
 import { GameOverPanel } from "./GameOverPanel";
 import { spriteDefinition } from "./Runner/spriteDefinition";
 import { Runner_config } from "./Runner/config";
-import { getRandomNum } from "./utils";
+import { getRandomNum, createCanvas } from "./utils";
 import { Horizon } from "./Horizon/index";
 import { HorizonLine } from "./HorizonLine/index";
 import { Cloud } from "./Cloud/index";
@@ -825,25 +825,7 @@ function vibrate(duration) {
   }
 }
 
-/**
- * Create canvas element.
- * @param {HTMLElement} container Element to append canvas to.
- * @param {number} width
- * @param {number} height
- * @param {string} opt_classname
- * @return {HTMLCanvasElement}
- */
-function createCanvas(container, width, height, opt_classname) {
-  var canvas = document.createElement("canvas");
-  canvas.className = opt_classname
-    ? Runner.classes.CANVAS + " " + opt_classname
-    : Runner.classes.CANVAS;
-  canvas.width = width;
-  canvas.height = height;
-  container.appendChild(canvas);
 
-  return canvas;
-}
 
 /**
  * Decodes the base 64 audio to ArrayBuffer used by Web Audio.

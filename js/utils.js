@@ -8,18 +8,27 @@ function getRandomNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-/**
- * Updates the canvas size taking into
- * account the backing store pixel ratio and
- * the device pixel ratio.
- *
- * See article by Paul Lewis:
- * http://www.html5rocks.com/en/tutorials/canvas/hidpi/
- *
- * @param {HTMLCanvasElement} canvas
- * @param {number} opt_width
- * @param {number} opt_height
- * @return {boolean} Whether the canvas was scaled.
- */
 
-export{ getRandomNum }
+
+
+
+/**
+ * Create canvas element.
+ * @param {HTMLElement} container Element to append canvas to.
+ * @param {number} width
+ * @param {number} height
+ * @param {string} opt_classname
+ * @return {HTMLCanvasElement}
+ */
+function createCanvas(container, width, height, opt_classname) {
+  var canvas = document.createElement("canvas");
+  canvas.className = opt_classname
+    ? Runner.classes.CANVAS + " " + opt_classname
+    : Runner.classes.CANVAS;
+  canvas.width = width;
+  canvas.height = height;
+  container.appendChild(canvas);
+
+  return canvas;
+}
+export{ getRandomNum, createCanvas }
