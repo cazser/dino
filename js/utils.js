@@ -31,4 +31,32 @@ function createCanvas(container, width, height, opt_classname) {
 
   return canvas;
 }
-export{ getRandomNum, createCanvas }
+
+
+/**
+ * Compare two collision boxes for a collision.
+ * @param {CollisionBox} tRexBox
+ * @param {CollisionBox} obstacleBox
+ * @return {boolean} Whether the boxes intersected.
+ */
+function boxCompare(tRexBox, obstacleBox) {
+  var crashed = false;
+  var tRexBoxX = tRexBox.x;
+  var tRexBoxY = tRexBox.y;
+
+  var obstacleBoxX = obstacleBox.x;
+  var obstacleBoxY = obstacleBox.y;
+
+  // Axis-Aligned Bounding Box method.
+  if (
+    tRexBox.x < obstacleBoxX + obstacleBox.width &&
+    tRexBox.x + tRexBox.width > obstacleBoxX &&
+    tRexBox.y < obstacleBox.y + obstacleBox.height &&
+    tRexBox.height + tRexBox.y > obstacleBox.y
+  ) {
+    crashed = true;
+  }
+
+  return crashed;
+}
+export{ getRandomNum, createCanvas , boxCompare}

@@ -1,7 +1,7 @@
 import { GameOverPanel } from "./GameOverPanel";
 import { spriteDefinition } from "./Runner/spriteDefinition";
 import { Runner_config } from "./Runner/config";
-import { getRandomNum, createCanvas } from "./utils";
+import { getRandomNum, createCanvas, boxCompare } from "./utils";
 import { Horizon } from "./Horizon/index";
 import { HorizonLine } from "./HorizonLine/index";
 import { Cloud } from "./Cloud/index";
@@ -24,6 +24,7 @@ import { Runner_adjustDemisions } from "./Runner/adjustDemisions";
 import { Runner_setDisableRunner } from "./Runner/setDisableRunner";
 import { Runner_startListening } from "./Runner/startListening";
 import { Runner_onKeyDown } from "./Runner/onKeyDown";
+
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -765,32 +766,7 @@ function drawCollisionBoxes(canvasCtx, tRexBox, obstacleBox) {
   canvasCtx.restore();
 }
 
-/**
- * Compare two collision boxes for a collision.
- * @param {CollisionBox} tRexBox
- * @param {CollisionBox} obstacleBox
- * @return {boolean} Whether the boxes intersected.
- */
-function boxCompare(tRexBox, obstacleBox) {
-  var crashed = false;
-  var tRexBoxX = tRexBox.x;
-  var tRexBoxY = tRexBox.y;
 
-  var obstacleBoxX = obstacleBox.x;
-  var obstacleBoxY = obstacleBox.y;
-
-  // Axis-Aligned Bounding Box method.
-  if (
-    tRexBox.x < obstacleBoxX + obstacleBox.width &&
-    tRexBox.x + tRexBox.width > obstacleBoxX &&
-    tRexBox.y < obstacleBox.y + obstacleBox.height &&
-    tRexBox.height + tRexBox.y > obstacleBox.y
-  ) {
-    crashed = true;
-  }
-
-  return crashed;
-}
 
 
 /**
