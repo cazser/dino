@@ -11,6 +11,7 @@ import { DEFAULT_WIDTH, FPS, IS_HIDPI, IS_IOS, IS_MOBILE, IS_TOUCH_ENABLED } fro
 import { Runner_startGame } from "./Runner/startGame";
 import { DistanceMeter } from "./DistanceMeter/index";
 import { Runner_classes } from "./Runner/classes";
+import { Runner_updateConfigSetting } from "./Runner/updateConfigSetting";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -192,25 +193,7 @@ Runner.prototype = {
    * @param {string} setting
    * @param {*} value
    */
-  updateConfigSetting: function (setting, value) {
-    if (setting in this.config && value != undefined) {
-      this.config[setting] = value;
-
-      switch (setting) {
-        case "GRAVITY":
-        case "MIN_JUMP_HEIGHT":
-        case "SPEED_DROP_COEFFICIENT":
-          this.tRex.config[setting] = value;
-          break;
-        case "INITIAL_JUMP_VELOCITY":
-          this.tRex.setJumpVelocity(value);
-          break;
-        case "SPEED":
-          this.setSpeed(value);
-          break;
-      }
-    }
-  },
+  updateConfigSetting: Runner_updateConfigSetting,
 
   /**
    * Cache the appropriate image sprite from the page and get the sprite sheet
