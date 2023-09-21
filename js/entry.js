@@ -1,6 +1,7 @@
 import { GameOverPanel } from "./GameOverPanel";
 import { spriteDefinition } from "./Runner/spriteDefinition";
 import { Runner_config } from "./Runner/config";
+import { getRandomNum } from "./utils";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -942,16 +943,6 @@ Runner.updateCanvasScaling = function (canvas, opt_width, opt_height) {
   }
   return false;
 };
-
-/**
- * Get random number.
- * @param {number} min
- * @param {number} max
- * @param {number}
- */
-function getRandomNum(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 /**
  * Vibrate on mobile devices.
