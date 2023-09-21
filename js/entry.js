@@ -13,6 +13,8 @@ import { DistanceMeter } from "./DistanceMeter/index";
 import { Runner_classes } from "./Runner/classes";
 import { Runner_updateConfigSetting } from "./Runner/updateConfigSetting";
 import { Horizon_init } from "./Horizon/init";
+import { Runner_events } from "./Runner/events";
+import { Runner_keycodes } from "./Runner/keycodes";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -126,38 +128,13 @@ Runner.sounds = {
  * Key code mapping.
  * @enum {Object}
  */
-Runner.keycodes = {
-  JUMP: {
-    38: 1,
-    32: 1,
-  }, // Up, spacebar
-  DUCK: {
-    40: 1,
-  }, // Down
-  RESTART: {
-    13: 1,
-  }, // Enter
-};
+Runner.keycodes = Runner_keycodes;
 
 /**
  * Runner event names.
  * @enum {string}
  */
-Runner.events = {
-  ANIM_END: "webkitAnimationEnd",
-  CLICK: "click",
-  KEYDOWN: "keydown",
-  KEYUP: "keyup",
-  MOUSEDOWN: "mousedown",
-  MOUSEUP: "mouseup",
-  RESIZE: "resize",
-  TOUCHEND: "touchend",
-  TOUCHSTART: "touchstart",
-  VISIBILITY: "visibilitychange",
-  BLUR: "blur",
-  FOCUS: "focus",
-  LOAD: "load",
-};
+Runner.events =Runner_events; 
 Runner.prototype = {
   /**
    * Whether the easter egg has been disabled. CrOS enterprise enrolled devices.
