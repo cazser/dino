@@ -22,6 +22,7 @@ import { obstacle_draw } from "./Obstacle/draw";
 import { Runner } from "./Runner/index";
 import { Runner_adjustDemisions } from "./Runner/adjustDemisions";
 import { Runner_setDisableRunner } from "./Runner/setDisableRunner";
+import { Runner_startListening } from "./Runner/startListening";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -409,22 +410,7 @@ Runner.prototype = {
   /**
    * Bind relevant key / mouse / touch listeners.
    */
-  startListening: function () {
-    // Keys.
-    document.addEventListener(Runner.events.KEYDOWN, this);
-    document.addEventListener(Runner.events.KEYUP, this);
-
-    if (IS_MOBILE) {
-      // Mobile only touch devices.
-      this.touchController.addEventListener(Runner.events.TOUCHSTART, this);
-      this.touchController.addEventListener(Runner.events.TOUCHEND, this);
-      this.containerEl.addEventListener(Runner.events.TOUCHSTART, this);
-    } else {
-      // Mouse.
-      document.addEventListener(Runner.events.MOUSEDOWN, this);
-      document.addEventListener(Runner.events.MOUSEUP, this);
-    }
-  },
+  startListening: Runner_startListening,
 
   /**
    * Remove all listeners.
