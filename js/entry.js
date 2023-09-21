@@ -12,6 +12,7 @@ import { Runner_startGame } from "./Runner/startGame";
 import { DistanceMeter } from "./DistanceMeter/index";
 import { Runner_classes } from "./Runner/classes";
 import { Runner_updateConfigSetting } from "./Runner/updateConfigSetting";
+import { Horizon_init } from "./Horizon/init";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -2127,15 +2128,7 @@ Horizon.prototype = {
   /**
    * Initialise the horizon. Just add the line and a cloud. No obstacles.
    */
-  init: function () {
-    this.addCloud();
-    this.horizonLine = new HorizonLine(this.canvas, this.spritePos.HORIZON);
-    this.nightMode = new NightMode(
-      this.canvas,
-      this.spritePos.MOON,
-      this.dimensions.WIDTH
-    );
-  },
+  init:Horizon_init,
 
   /**
    * @param {number} deltaTime
