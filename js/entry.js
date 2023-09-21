@@ -18,6 +18,7 @@ import { Runner_keycodes } from "./Runner/keycodes";
 import { Runner_updateCanvasScaling } from "./Runner/updateCanvasScaling";
 import { Runner_handleEvent } from "./Runner/handleEvent";
 import { Obstacle } from "./Obstacle/index";
+import { obstacle_draw } from "./Obstacle/draw";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -1032,36 +1033,7 @@ function boxCompare(tRexBox, obstacleBox) {
     /**
      * Draw and crop based on size.
      */
-    draw: function () {
-      var sourceWidth = this.typeConfig.width;
-      var sourceHeight = this.typeConfig.height;
-
-      if (IS_HIDPI) {
-        sourceWidth = sourceWidth * 2;
-        sourceHeight = sourceHeight * 2;
-      }
-
-      // X position in sprite.
-      var sourceX =
-        sourceWidth * this.size * (0.5 * (this.size - 1)) + this.spritePos.x;
-
-      // Animation frames.
-      if (this.currentFrame > 0) {
-        sourceX += sourceWidth * this.currentFrame;
-      }
-
-      this.canvasCtx.drawImage(
-        Runner.imageSprite,
-        sourceX,
-        this.spritePos.y,
-        sourceWidth * this.size,
-        sourceHeight,
-        this.xPos,
-        this.yPos,
-        this.typeConfig.width * this.size,
-        this.typeConfig.height
-      );
-    },
+    draw: obstacle_draw,
 
     /**
      * Obstacle frame update.
