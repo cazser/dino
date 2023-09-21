@@ -9,5 +9,6 @@ module.exports = {
   mode: "development",
    externals: {
     window: 'window',
+    document: 'document',
   },
 };

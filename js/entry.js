@@ -8,6 +8,7 @@ import { Cloud } from "./Cloud/index";
 import { CollisionBox } from "./CollisionBox/index";
 import { NightMode } from "./NightMode/index";
 import { DEFAULT_WIDTH, FPS, IS_HIDPI, IS_IOS, IS_MOBILE, IS_TOUCH_ENABLED } from "./shared_constant";
+import { Runner_startGame } from "./Runner/startGame";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -459,29 +460,7 @@ Runner.prototype = {
   /**
    * Update the game status to started.
    */
-  startGame: function () {
-    this.runningTime = 0;
-    this.playingIntro = false;
-    this.tRex.playingIntro = false;
-    this.containerEl.style.webkitAnimation = "";
-    this.playCount++;
-
-    // Handle tabbing off the page. Pause the current game.
-    document.addEventListener(
-      Runner.events.VISIBILITY,
-      this.onVisibilityChange.bind(this)
-    );
-
-    window.addEventListener(
-      Runner.events.BLUR,
-      this.onVisibilityChange.bind(this)
-    );
-
-    window.addEventListener(
-      Runner.events.FOCUS,
-      this.onVisibilityChange.bind(this)
-    );
-  },
+  startGame: Runner_startGame,
 
   clearCanvas: function () {
     this.canvasCtx.clearRect(
