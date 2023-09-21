@@ -10,6 +10,7 @@ import { NightMode } from "./NightMode/index";
 import { DEFAULT_WIDTH, FPS, IS_HIDPI, IS_IOS, IS_MOBILE, IS_TOUCH_ENABLED } from "./shared_constant";
 import { Runner_startGame } from "./Runner/startGame";
 import { DistanceMeter } from "./DistanceMeter/index";
+import { Runner_classes } from "./Runner/classes";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -103,18 +104,8 @@ Runner.defaultDimensions = {
  * CSS class names.
  * @enum {string}
  */
-Runner.classes = {
-  CANVAS: "runner-canvas",
-  CONTAINER: "runner-container",
-  CRASHED: "crashed",
-  ICON: "icon-offline",
-  INVERTED: "inverted",
-  SNACKBAR: "snackbar",
-  SNACKBAR_SHOW: "snackbar-show",
-  TOUCH_CONTROLLER: "controller",
-};
-
-/**
+Runner.classes =Runner_classes;
+ /**
  * Sprite definition layout of the spritesheet.
  * @enum {Object}
  */
