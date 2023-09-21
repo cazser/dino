@@ -1,5 +1,5 @@
 //******************************************************************************
-
+import { IS_HIDPI } from "./shared_constant";
 /**
  * Game over panel.
  * @param {!HTMLCanvasElement} canvas

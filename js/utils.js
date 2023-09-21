@@ -1,3 +1,4 @@
+import { IS_IOS } from "./shared_constant";
 /**
  * Get random number.
  * @param {number} min
@@ -59,4 +60,12 @@ function boxCompare(tRexBox, obstacleBox) {
 
   return crashed;
 }
-export{ getRandomNum, createCanvas , boxCompare}
+
+/**
+ * Return the current timestamp.
+ * @return {number}
+ */
+function getTimeStamp() {
+  return IS_IOS ? new Date().getTime() : performance.now();
+}
+export{ getRandomNum, createCanvas , boxCompare, getTimeStamp}

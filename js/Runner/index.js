@@ -1,4 +1,4 @@
-import { FPS } from "../shared_constant";
+import { FPS, IS_MOBILE } from "../shared_constant";
 ("use strict");
 /**
  * T-Rex runner.

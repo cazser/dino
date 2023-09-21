@@ -10,5 +10,6 @@ module.exports = {
    externals: {
     window: 'window',
     document: 'document',
+    parseInt: 'parseInt',
   },
 };
