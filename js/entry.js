@@ -16,6 +16,7 @@ import { Horizon_init } from "./Horizon/init";
 import { Runner_events } from "./Runner/events";
 import { Runner_keycodes } from "./Runner/keycodes";
 import { Runner_updateCanvasScaling } from "./Runner/updateCanvasScaling";
+import { Runner_handleEvent } from "./Runner/handleEvent";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -521,22 +522,7 @@ Runner.prototype = {
   /**
    * Event handler.
    */
-  handleEvent: function (e) {
-    return function (evtType, events) {
-      switch (evtType) {
-        case events.KEYDOWN:
-        case events.TOUCHSTART:
-        case events.MOUSEDOWN:
-          this.onKeyDown(e);
-          break;
-        case events.KEYUP:
-        case events.TOUCHEND:
-        case events.MOUSEUP:
-          this.onKeyUp(e);
-          break;
-      }
-    }.bind(this)(e.type, Runner.events);
-  },
+  handleEvent: Runner_handleEvent,
 
   /**
    * Bind relevant key / mouse / touch listeners.
