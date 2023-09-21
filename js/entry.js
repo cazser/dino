@@ -4,6 +4,7 @@ import { Runner_config } from "./Runner/config";
 import { getRandomNum } from "./utils";
 import { Horizon } from "./Horizon/index";
 import { HorizonLine } from "./HorizonLine/index";
+import { Cloud } from "./Cloud/index";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -2062,44 +2063,6 @@ DistanceMeter.prototype = {
     this.update(0);
     this.acheivement = false;
   },
-};
-
-//******************************************************************************
-
-/**
- * Cloud background item.
- * Similar to an obstacle object but without collision boxes.
- * @param {HTMLCanvasElement} canvas Canvas element.
- * @param {Object} spritePos Position of image in sprite.
- * @param {number} containerWidth
- */
-function Cloud(canvas, spritePos, containerWidth) {
-  this.canvas = canvas;
-  this.canvasCtx = this.canvas.getContext("2d");
-  this.spritePos = spritePos;
-  this.containerWidth = containerWidth;
-  this.xPos = containerWidth;
-  this.yPos = 0;
-  this.remove = false;
-  this.cloudGap = getRandomNum(
-    Cloud.config.MIN_CLOUD_GAP,
-    Cloud.config.MAX_CLOUD_GAP
-  );
-
-  this.init();
-}
-
-/**
- * Cloud object config.
- * @enum {number}
- */
-Cloud.config = {
-  HEIGHT: 14,
-  MAX_CLOUD_GAP: 400,
-  MAX_SKY_LEVEL: 30,
-  MIN_CLOUD_GAP: 100,
-  MIN_SKY_LEVEL: 71,
-  WIDTH: 46,
 };
 
 Cloud.prototype = {
