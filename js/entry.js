@@ -7,6 +7,7 @@ import { HorizonLine } from "./HorizonLine/index";
 import { Cloud } from "./Cloud/index";
 import { CollisionBox } from "./CollisionBox/index";
 import { NightMode } from "./NightMode/index";
+import { DEFAULT_WIDTH, FPS, IS_HIDPI, IS_IOS, IS_MOBILE, IS_TOUCH_ENABLED } from "./shared_constant";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -80,30 +81,6 @@ function Runner(outerContainerId, opt_config) {
   }
 }
 window["Runner"] = Runner;
-
-/**
- * Default game width.
- * @const
- */
-var DEFAULT_WIDTH = 600;
-
-/**
- * Frames per second.
- * @const
- */
-var FPS = 60;
-
-/** @const */
-var IS_HIDPI = window.devicePixelRatio > 1;
-
-/** @const */
-var IS_IOS = /iPad|iPhone|iPod/.test(window.navigator.platform);
-
-/** @const */
-var IS_MOBILE = /Android/.test(window.navigator.userAgent) || IS_IOS;
-
-/** @const */
-var IS_TOUCH_ENABLED = "ontouchstart" in window;
 
 /**
  * Default game configuration.
