@@ -21,6 +21,7 @@ import { Obstacle } from "./Obstacle/index";
 import { obstacle_draw } from "./Obstacle/draw";
 import { Runner } from "./Runner/index";
 import { Runner_adjustDemisions } from "./Runner/adjustDemisions";
+import { Runner_setDisableRunner } from "./Runner/setDisableRunner";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -86,23 +87,7 @@ Runner.prototype = {
   /**
    * For disabled instances, set up a snackbar with the disabled message.
    */
-  setupDisabledRunner: function () {
-    this.containerEl = document.createElement("div");
-    this.containerEl.className = Runner.classes.SNACKBAR;
-    this.containerEl.textContent = loadTimeData.getValue("disabledEasterEgg");
-    this.outerContainerEl.appendChild(this.containerEl);
-
-    // Show notification when the activation key is pressed.
-    document.addEventListener(
-      Runner.events.KEYDOWN,
-      function (e) {
-        if (Runner.keycodes.JUMP[e.keyCode]) {
-          this.containerEl.classList.add(Runner.classes.SNACKBAR_SHOW);
-          document.querySelector(".icon").classList.add("icon-disabled");
-        }
-      }.bind(this)
-    );
-  },
+  setupDisabledRunner: Runner_setDisableRunner,
 
   /**
    * Setting individual settings for debugging.
