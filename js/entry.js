@@ -3,6 +3,7 @@ import { spriteDefinition } from "./Runner/spriteDefinition";
 import { Runner_config } from "./Runner/config";
 import { getRandomNum } from "./utils";
 import { Horizon } from "./Horizon/index";
+import { HorizonLine } from "./HorizonLine/index";
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -2339,42 +2340,6 @@ NightMode.prototype = {
   },
 };
 
-//******************************************************************************
-
-/**
- * Horizon Line.
- * Consists of two connecting lines. Randomly assigns a flat / bumpy horizon.
- * @param {HTMLCanvasElement} canvas
- * @param {Object} spritePos Horizon position in sprite.
- * @constructor
- */
-function HorizonLine(canvas, spritePos) {
-  this.spritePos = spritePos;
-  this.canvas = canvas;
-  this.canvasCtx = canvas.getContext("2d");
-  this.sourceDimensions = {};
-  this.dimensions = HorizonLine.dimensions;
-  this.sourceXPos = [
-    this.spritePos.x,
-    this.spritePos.x + this.dimensions.WIDTH,
-  ];
-  this.xPos = [];
-  this.yPos = 0;
-  this.bumpThreshold = 0.5;
-
-  this.setSourceDimensions();
-  this.draw();
-}
-
-/**
- * Horizon line dimensions.
- * @enum {number}
- */
-HorizonLine.dimensions = {
-  WIDTH: 600,
-  HEIGHT: 12,
-  YPOS: 127,
-};
 
 HorizonLine.prototype = {
   /**
