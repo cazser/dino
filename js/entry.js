@@ -1,7 +1,7 @@
 import { GameOverPanel } from "./GameOverPanel";
 import { spriteDefinition } from "./Runner/spriteDefinition";
 import { Runner_config } from "./Runner/config";
-import { getRandomNum, createCanvas, boxCompare, getTimeStamp } from "./utils";
+import { getRandomNum, createCanvas, boxCompare, getTimeStamp, vibrate, decodeBase64ToArrayBuffer } from "./utils";
 import { Horizon } from "./Horizon/index";
 import { HorizonLine } from "./HorizonLine/index";
 import { Cloud } from "./Cloud/index";
@@ -10,11 +10,8 @@ import { NightMode } from "./NightMode/index";
 import { DEFAULT_WIDTH, FPS, IS_HIDPI, IS_IOS, IS_MOBILE, IS_TOUCH_ENABLED } from "./shared_constant";
 import { Runner_startGame } from "./Runner/startGame";
 import { DistanceMeter } from "./DistanceMeter/index";
-import { Runner_classes } from "./Runner/classes";
 import { Runner_updateConfigSetting } from "./Runner/updateConfigSetting";
 import { Horizon_init } from "./Horizon/init";
-import { Runner_events } from "./Runner/events";
-import { Runner_keycodes } from "./Runner/keycodes";
 import { Runner_updateCanvasScaling } from "./Runner/updateCanvasScaling";
 import { Runner_handleEvent } from "./Runner/handleEvent";
 import { Obstacle } from "./Obstacle/index";
@@ -571,34 +568,6 @@ Runner.prototype = {
 };
 
 Runner.updateCanvasScaling= Runner_updateCanvasScaling; 
-/**
- * Vibrate on mobile devices.
- * @param {number} duration Duration of the vibration in milliseconds.
- */
-function vibrate(duration) {
-  if (IS_MOBILE && window.navigator.vibrate) {
-    window.navigator.vibrate(duration);
-  }
-}
-
-
-
-/**
- * Decodes the base 64 audio to ArrayBuffer used by Web Audio.
- * @param {string} base64String
- */
-function decodeBase64ToArrayBuffer(base64String) {
-  var len = (base64String.length / 4) * 3;
-  var str = atob(base64String);
-  var arrayBuffer = new ArrayBuffer(len);
-  var bytes = new Uint8Array(arrayBuffer);
-
-  for (var i = 0; i < len; i++) {
-    bytes[i] = str.charCodeAt(i);
-  }
-  return bytes.buffer;
-}
-
 
 
 
