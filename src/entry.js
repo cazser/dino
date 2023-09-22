@@ -8,4 +8,3 @@ import { Runner } from "./Runner/index";
 
 window["Runner"] = Runner;
 
-fn("hello")
