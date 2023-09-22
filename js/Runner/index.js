@@ -69,4 +69,13 @@ function Runner(outerContainerId, opt_config) {
   }
 }
 
+/**
+ * Sound FX. Reference to the ID of the audio tag on interstitial page.
+ * @enum {string}
+ */
+Runner.sounds = {
+  BUTTON_PRESS: "offline-sound-press",
+  HIT: "offline-sound-hit",
+  SCORE: "offline-sound-reached",
+};
 export {Runner}
