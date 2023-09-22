@@ -1,4 +1,4 @@
-
+import {fn} from "./test.ts"
 import { Runner } from "./Runner/index";
 
 
@@ -7,3 +7,5 @@ import { Runner } from "./Runner/index";
 // found in the LICENSE file.
 
 window["Runner"] = Runner;
+
+fn("hello")

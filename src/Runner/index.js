@@ -8,10 +8,17 @@ import { spriteDefinition } from "./spriteDefinition";
 import { Runner_updateConfigSetting } from "./updateConfigSetting";
 import { Horizon } from "../Horizon/index";
 import { Runner_startGame } from "./startGame";
-import { getTimeStamp,checkForCollision, decodeBase64ToArrayBuffer , createCanvas} from "../utils";
+import { getTimeStamp,checkForCollision, vibrate, decodeBase64ToArrayBuffer , createCanvas} from "../utils";
 import { DistanceMeter } from "../DistanceMeter/index";
 import { Trex } from "../Trex/index";
+import {Cloud} from "../Cloud/index";
 import { Runner_updateCanvasScaling } from "./updateCanvasScaling";
+import { Runner_adjustDemisions } from "./adjustDemisions";
+import {Runner_handleEvent} from './handleEvent';
+import {Runner_startListening} from './startListening';
+import {Runner_stopListening} from './stopListening';
+import {Runner_onKeyDown} from './onKeyDown';
+import {GameOverPanel} from '../GameOverPanel';
 ("use strict");
 /**
  * T-Rex runner.

@@ -1,5 +1,6 @@
 import { IS_IOS, IS_MOBILE } from "./shared_constant";
 import { CollisionBox } from "./CollisionBox/index";
+import { Trex } from "./Trex/index";
 /**
  * Get random number.
  * @param {number} min

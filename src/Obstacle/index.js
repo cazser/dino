@@ -2,6 +2,7 @@
 import { getRandomNum } from "../utils";
 import { CollisionBox } from "../CollisionBox/index";
 import { obstacle_draw } from "./draw";
+import { FPS } from "../shared_constant";
 /**
  * Obstacle.
  * @param {HTMLCanvasCtx} canvasCtx

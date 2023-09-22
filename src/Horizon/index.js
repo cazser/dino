@@ -1,6 +1,8 @@
 import { Horizon_init } from "./init";
 import { getRandomNum } from "../utils";
 import { Obstacle } from "../Obstacle/index";
+import { Cloud } from "../Cloud/index";
+import { FPS } from "../shared_constant";
 /**
  * Horizon background class.
  * @param {HTMLCanvasElement} canvas
