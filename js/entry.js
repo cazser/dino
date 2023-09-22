@@ -25,6 +25,7 @@ import { Runner_setDisableRunner } from "./Runner/setDisableRunner";
 import { Runner_startListening } from "./Runner/startListening";
 import { Runner_onKeyDown } from "./Runner/onKeyDown";
 import { Trex } from "./Trex/index";
+import { Runner_stopListening } from "./Runner/stopListening";
 
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
@@ -373,19 +374,7 @@ Runner.prototype = {
   /**
    * Remove all listeners.
    */
-  stopListening: function () {
-    document.removeEventListener(Runner.events.KEYDOWN, this);
-    document.removeEventListener(Runner.events.KEYUP, this);
-
-    if (IS_MOBILE) {
-      this.touchController.removeEventListener(Runner.events.TOUCHSTART, this);
-      this.touchController.removeEventListener(Runner.events.TOUCHEND, this);
-      this.containerEl.removeEventListener(Runner.events.TOUCHSTART, this);
-    } else {
-      document.removeEventListener(Runner.events.MOUSEDOWN, this);
-      document.removeEventListener(Runner.events.MOUSEUP, this);
-    }
-  },
+  stopListening: Runner_stopListening,
 
   /**
    * Process keydown.
