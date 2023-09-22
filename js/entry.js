@@ -32,44 +32,7 @@ import { Trex } from "./Trex/index";
 
 window["Runner"] = Runner;
 
-/**
- * Default game configuration.
- * @enum {number}
- */
-Runner.config = Runner_config;
 
-/**
- * Default dimensions.
- * @enum {string}
- */
-Runner.defaultDimensions = {
-  WIDTH: DEFAULT_WIDTH,
-  HEIGHT: 150,
-};
-
-/**
- * CSS class names.
- * @enum {string}
- */
-Runner.classes =Runner_classes;
- /**
- * Sprite definition layout of the spritesheet.
- * @enum {Object}
- */
-Runner.spriteDefinition = spriteDefinition;
-
-
-/**
- * Key code mapping.
- * @enum {Object}
- */
-Runner.keycodes = Runner_keycodes;
-
-/**
- * Runner event names.
- * @enum {string}
- */
-Runner.events =Runner_events; 
 Runner.prototype = {
   /**
    * Whether the easter egg has been disabled. CrOS enterprise enrolled devices.

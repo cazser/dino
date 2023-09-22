@@ -1,3 +1,4 @@
+import { IS_MOBILE } from "../shared_constant";
 const Runner_startListening= function () {
     // Keys.
     document.addEventListener(Runner.events.KEYDOWN, this);

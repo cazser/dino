@@ -1,4 +1,9 @@
-import { FPS, IS_MOBILE } from "../shared_constant";
+import { FPS, IS_MOBILE, DEFAULT_WIDTH } from "../shared_constant";
+import { Runner_classes } from "./classes";
+import { Runner_config } from "./config";
+import { Runner_events } from "./events";
+import { Runner_keycodes } from "./keycodes";
+import { spriteDefinition } from "./spriteDefinition";
 ("use strict");
 /**
  * T-Rex runner.
@@ -69,6 +74,45 @@ function Runner(outerContainerId, opt_config) {
   }
 }
 
+
+/**
+ * Default game configuration.
+ * @enum {number}
+ */
+Runner.config = Runner_config;
+
+/**
+ * Default dimensions.
+ * @enum {string}
+ */
+Runner.defaultDimensions = {
+  WIDTH: DEFAULT_WIDTH,
+  HEIGHT: 150,
+};
+
+/**
+ * CSS class names.
+ * @enum {string}
+ */
+Runner.classes =Runner_classes;
+ /**
+ * Sprite definition layout of the spritesheet.
+ * @enum {Object}
+ */
+Runner.spriteDefinition = spriteDefinition;
+
+
+/**
+ * Key code mapping.
+ * @enum {Object}
+ */
+Runner.keycodes = Runner_keycodes;
+
+/**
+ * Runner event names.
+ * @enum {string}
+ */
+Runner.events =Runner_events; 
 /**
  * Sound FX. Reference to the ID of the audio tag on interstitial page.
  * @enum {string}
