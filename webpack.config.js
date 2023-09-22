@@ -11,5 +11,9 @@ module.exports = {
     window: 'window',
     document: 'document',
     parseInt: 'parseInt',
+    requestAnimationFrame: 'requestAnimationFrame',
+    cancelAnimationFrame :"cancelAnimationFrame",
+    setInterval:"setInterval",
+    AudioContext:"AudioContext",
   },
 };
