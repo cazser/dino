@@ -11,6 +11,7 @@ import { Runner_startGame } from "./startGame";
 import { getTimeStamp,checkForCollision, decodeBase64ToArrayBuffer , createCanvas} from "../utils";
 import { DistanceMeter } from "../DistanceMeter/index";
 import { Trex } from "../Trex/index";
+import { Runner_updateCanvasScaling } from "./updateCanvasScaling";
 ("use strict");
 /**
  * T-Rex runner.
@@ -666,4 +667,6 @@ Runner.prototype = {
     }
   },
 };
+
+Runner.updateCanvasScaling=Runner_updateCanvasScaling; 
 export {Runner}
