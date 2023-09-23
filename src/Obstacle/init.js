@@ -1,4 +1,5 @@
 import { IS_MOBILE } from "../shared_constant";
+import { getRandomNum } from "../utils";
 const Obstacle_init = function (speed) {
       this.cloneCollisionBoxes();
 

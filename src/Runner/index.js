@@ -20,6 +20,7 @@ import {Runner_stopListening} from './stopListening';
 import {Runner_onKeyDown} from './onKeyDown';
 import {GameOverPanel} from '../GameOverPanel';
 import { Runner_playSound } from "./playSound";
+import { Runner_restat } from "./restart";
 ("use strict");
 /**
  * T-Rex runner.
@@ -608,26 +609,7 @@ Runner.prototype = {
     }
   },
 
-  restart: function () {
-    if (!this.raqId) {
-      this.playCount++;
-      this.runningTime = 0;
-      this.playing = true;
-      this.crashed = false;
-      this.distanceRan = 0;
-      this.setSpeed(this.config.SPEED);
-      this.time = getTimeStamp();
-      this.containerEl.classList.remove(Runner.classes.CRASHED);
-      this.clearCanvas();
-      this.distanceMeter.reset(this.highestScore);
-      this.horizon.reset();
-      this.tRex.reset();
-      this.playSound(this.soundFx.BUTTON_PRESS);
-      this.invert(true);
-      this.update();
-    }
-  },
-
+  restart: Runner_restat,
   /**
    * Pause the game if the tab is not in focus.
    */
