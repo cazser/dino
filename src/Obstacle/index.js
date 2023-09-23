@@ -6,6 +6,7 @@ import { FPS } from "../shared_constant";
 import { types } from "./types";
 import { getGap } from "./getGap";
 import { IS_MOBILE } from "../shared_constant";
+import { Obstacle_update } from "./update";
 /**
  * Obstacle.
  * @param {HTMLCanvasCtx} canvasCtx
@@ -132,32 +133,7 @@ Obstacle.types = types;
      * @param {number} deltaTime
      * @param {number} speed
      */
-    update: function (deltaTime, speed) {
-      if (!this.remove) {
-        if (this.typeConfig.speedOffset) {
-          speed += this.speedOffset;
-        }
-        this.xPos -= Math.floor(((speed * FPS) / 1000) * deltaTime);
-
-        // Update frame
-        if (this.typeConfig.numFrames) {
-          this.timer += deltaTime;
-          if (this.timer >= this.typeConfig.frameRate) {
-            this.currentFrame =
-              this.currentFrame == this.typeConfig.numFrames - 1
-                ? 0
-                : this.currentFrame + 1;
-            this.timer = 0;
-          }
-        }
-        this.draw();
-
-        if (!this.isVisible()) {
-          this.remove = true;
-        }
-      }
-    },
-
+    update: Obstacle_update, 
     /**
      * Calculate a random gap size.
      * - Minimum gap gets wider as speed increses
