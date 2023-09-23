@@ -2,6 +2,7 @@
 import { Runner } from "../Runner/index";
 import { IS_HIDPI, FPS } from "../shared_constant";
 import { HorizonLine_draw } from "./draw";
+import { HorizonLine_setSourceDimensions } from "./setSourceDimensions";
 /**
  * Horizon Line.
  * Consists of two connecting lines. Randomly assigns a flat / bumpy horizon.
@@ -42,22 +43,7 @@ HorizonLine.prototype = {
   /**
    * Set the source dimensions of the horizon line.
    */
-  setSourceDimensions: function () {
-    for (var dimension in HorizonLine.dimensions) {
-      if (IS_HIDPI) {
-        if (dimension != "YPOS") {
-          this.sourceDimensions[dimension] =
-            HorizonLine.dimensions[dimension] * 2;
-        }
-      } else {
-        this.sourceDimensions[dimension] = HorizonLine.dimensions[dimension];
-      }
-      this.dimensions[dimension] = HorizonLine.dimensions[dimension];
-    }
-
-    this.xPos = [0, HorizonLine.dimensions.WIDTH];
-    this.yPos = HorizonLine.dimensions.YPOS;
-  },
+  setSourceDimensions: HorizonLine_setSourceDimensions,
 
   /**
    * Return the crop x position of a type.
