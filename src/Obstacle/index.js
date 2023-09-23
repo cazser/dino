@@ -4,6 +4,7 @@ import { CollisionBox } from "../CollisionBox/index";
 import { obstacle_draw } from "./draw";
 import { FPS } from "../shared_constant";
 import { types } from "./types";
+import { getGap } from "./getGap";
 /**
  * Obstacle.
  * @param {HTMLCanvasCtx} canvasCtx
@@ -163,14 +164,7 @@ Obstacle.types = types;
      * @param {number} speed
      * @return {number} The gap size.
      */
-    getGap: function (gapCoefficient, speed) {
-      var minGap = Math.round(
-        this.width * speed + this.typeConfig.minGap * gapCoefficient
-      );
-      var maxGap = Math.round(minGap * Obstacle.MAX_GAP_COEFFICIENT);
-      return getRandomNum(minGap, maxGap);
-    },
-
+    getGap: getGap,
     /**
      * Check if obstacle is visible.
      * @return {boolean} Whether the obstacle is in the game area.
