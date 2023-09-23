@@ -19,6 +19,7 @@ import {Runner_startListening} from './startListening';
 import {Runner_stopListening} from './stopListening';
 import {Runner_onKeyDown} from './onKeyDown';
 import {GameOverPanel} from '../GameOverPanel';
+import { Runner_playSound } from "./playSound";
 ("use strict");
 /**
  * T-Rex runner.
@@ -648,15 +649,7 @@ Runner.prototype = {
    * Play a sound.
    * @param {SoundBuffer} soundBuffer
    */
-  playSound: function (soundBuffer) {
-    if (soundBuffer) {
-      var sourceNode = this.audioContext.createBufferSource();
-      sourceNode.buffer = soundBuffer;
-      sourceNode.connect(this.audioContext.destination);
-      sourceNode.start(0);
-    }
-  },
-
+  playSound: Runner_playSound, 
   /**
    * Inverts the current page / canvas colors.
    * @param {boolean} Whether to reset colors.
