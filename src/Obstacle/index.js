@@ -5,6 +5,7 @@ import { obstacle_draw } from "./draw";
 import { FPS } from "../shared_constant";
 import { types } from "./types";
 import { getGap } from "./getGap";
+import { IS_MOBILE } from "../shared_constant";
 /**
  * Obstacle.
  * @param {HTMLCanvasCtx} canvasCtx

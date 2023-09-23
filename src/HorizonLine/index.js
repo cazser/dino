@@ -1,6 +1,7 @@
 //******************************************************************************
 import { Runner } from "../Runner/index";
 import { IS_HIDPI, FPS } from "../shared_constant";
+import { HorizonLine_draw } from "./draw";
 /**
  * Horizon Line.
  * Consists of two connecting lines. Randomly assigns a flat / bumpy horizon.
@@ -68,32 +69,7 @@ HorizonLine.prototype = {
   /**
    * Draw the horizon line.
    */
-  draw: function () {
-    this.canvasCtx.drawImage(
-      Runner.imageSprite,
-      this.sourceXPos[0],
-      this.spritePos.y,
-      this.sourceDimensions.WIDTH,
-      this.sourceDimensions.HEIGHT,
-      this.xPos[0],
-      this.yPos,
-      this.dimensions.WIDTH,
-      this.dimensions.HEIGHT
-    );
-
-    this.canvasCtx.drawImage(
-      Runner.imageSprite,
-      this.sourceXPos[1],
-      this.spritePos.y,
-      this.sourceDimensions.WIDTH,
-      this.sourceDimensions.HEIGHT,
-      this.xPos[1],
-      this.yPos,
-      this.dimensions.WIDTH,
-      this.dimensions.HEIGHT
-    );
-  },
-
+  draw:HorizonLine_draw, 
   /**
    * Update the x position of an indivdual piece of the line.
    * @param {number} pos Line position.
