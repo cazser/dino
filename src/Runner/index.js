@@ -21,6 +21,7 @@ import {Runner_onKeyDown} from './onKeyDown';
 import {GameOverPanel} from '../GameOverPanel';
 import { Runner_playSound } from "./playSound";
 import { Runner_onVisibilityChange } from "./onVisibilityChange";
+import { Runner_play } from "./play";
 
 
 ("use strict");
@@ -601,16 +602,7 @@ Runner.prototype = {
     this.raqId = 0;
   },
 
-  play: function () {
-    if (!this.crashed) {
-      this.playing = true;
-      this.paused = false;
-      this.tRex.update(0, Trex.status.RUNNING);
-      this.time = getTimeStamp();
-      this.update();
-    }
-  },
-
+  play: Runner_play, 
   restart:  function () {
     if (!this.raqId) {
       this.playCount++;
