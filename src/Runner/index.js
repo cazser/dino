@@ -30,6 +30,8 @@ import { Runner_clearCanvas } from "./clearCanvas";
 import { Runner_createTouchController } from "./createTouchConroller";
 import { Runner_isLeftClickOnCanvas } from "./isLeftClickOnCanvas";
 import { Runner_update } from "./update";
+import { Runner_deboundResize } from "./deboundResize";
+import { Runner_scheduleNextUpdate } from "./scheduleNextUpdate";
 
 
 ("use strict");
@@ -202,11 +204,7 @@ Runner.prototype = {
   /**
    * Debounce the resize event.
    */
-  debounceResize: function () {
-    if (!this.resizeTimerId_) {
-      this.resizeTimerId_ = setInterval(this.adjustDimensions.bind(this), 250);
-    }
-  },
+  debounceResize: Runner_deboundResize,
 
   /**
    * Adjust game space dimensions on resize.
@@ -266,12 +264,7 @@ Runner.prototype = {
   /**
    * RequestAnimationFrame wrapper.
    */
-  scheduleNextUpdate: function () {
-    if (!this.updatePending) {
-      this.updatePending = true;
-      this.raqId = requestAnimationFrame(this.update.bind(this));
-    }
-  },
+  scheduleNextUpdate: Runner_scheduleNextUpdate ,
 
   /**
    * Whether the game is running.
