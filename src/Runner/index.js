@@ -22,6 +22,7 @@ import {GameOverPanel} from '../GameOverPanel';
 import { Runner_playSound } from "./playSound";
 import { Runner_onVisibilityChange } from "./onVisibilityChange";
 import { Runner_play } from "./play";
+import { Runner_stop } from "./stop";
 
 
 ("use strict");
@@ -595,12 +596,7 @@ Runner.prototype = {
     this.time = getTimeStamp();
   },
 
-  stop: function () {
-    this.playing = false;
-    this.paused = true;
-    cancelAnimationFrame(this.raqId);
-    this.raqId = 0;
-  },
+  stop: Runner_stop,
 
   play: Runner_play, 
   restart:  function () {
