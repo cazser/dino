@@ -6,19 +6,14 @@ import { Runner_keycodes } from "./keycodes";
 import { Runner_setDisableRunner } from "./setDisableRunner";
 import { spriteDefinition } from "./spriteDefinition";
 import { Runner_updateConfigSetting } from "./updateConfigSetting";
-import { Horizon } from "../Horizon/index";
 import { Runner_startGame } from "./startGame";
 import { getTimeStamp,checkForCollision, vibrate, decodeBase64ToArrayBuffer , createCanvas} from "../utils";
-import { DistanceMeter } from "../DistanceMeter/index";
-import { Trex } from "../Trex/index";
-import {Cloud} from "../Cloud/index";
 import { Runner_updateCanvasScaling } from "./updateCanvasScaling";
 import { Runner_adjustDemisions } from "./adjustDemisions";
 import {Runner_handleEvent} from './handleEvent';
 import {Runner_startListening} from './startListening';
 import {Runner_stopListening} from './stopListening';
 import {Runner_onKeyDown} from './onKeyDown';
-import {GameOverPanel} from '../GameOverPanel';
 import { Runner_playSound } from "./playSound";
 import { Runner_onVisibilityChange } from "./onVisibilityChange";
 import { Runner_play } from "./play";
@@ -32,6 +27,8 @@ import { Runner_onkeyup } from "./onKeyUp";
 import { Runner_init } from "./init";
 import { Runner_playIntro } from "./playIntro";
 import { Runner_clearCanvas } from "./clearCanvas";
+import { Runner_createTouchController } from "./createTouchConroller";
+import { Runner_isLeftClickOnCanvas } from "./isLeftClickOnCanvas";
 
 
 ("use strict");
@@ -199,11 +196,7 @@ Runner.prototype = {
   /**
    * Create the touch controller. A div that covers whole screen.
    */
-  createTouchController: function () {
-    this.touchController = document.createElement("div");
-    this.touchController.className = Runner.classes.TOUCH_CONTROLLER;
-    this.outerContainerEl.appendChild(this.touchController);
-  },
+  createTouchController: Runner_createTouchController,
 
   /**
    * Debounce the resize event.
@@ -356,14 +349,7 @@ Runner.prototype = {
    * @param {Event} e
    * @return {boolean}
    */
-  isLeftClickOnCanvas: function (e) {
-    return (
-      e.button != null &&
-      e.button < 2 &&
-      e.type == Runner.events.MOUSEUP &&
-      e.target == this.canvas
-    );
-  },
+  isLeftClickOnCanvas: Runner_isLeftClickOnCanvas, 
 
   /**
    * RequestAnimationFrame wrapper.
