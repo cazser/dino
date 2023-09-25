@@ -27,6 +27,7 @@ import { Runner_invert } from "./invert";
 import { Runner_loadImages } from "./loadImages";
 import { Runner_gameover } from "../Obstacle/gameover";
 import { Runner_loadSounds } from "./loadSounds";
+import { Runner_setSpeed } from "./setSpeed";
 
 
 ("use strict");
@@ -185,20 +186,7 @@ Runner.prototype = {
    * Sets the game speed. Adjust the speed accordingly if on a smaller screen.
    * @param {number} opt_speed
    */
-  setSpeed: function (opt_speed) {
-    var speed = opt_speed || this.currentSpeed;
-
-    // Reduce the speed on smaller mobile screens.
-    if (this.dimensions.WIDTH < DEFAULT_WIDTH) {
-      var mobileSpeed =
-        ((speed * this.dimensions.WIDTH) / DEFAULT_WIDTH) *
-        this.config.MOBILE_SPEED_COEFFICIENT;
-      this.currentSpeed = mobileSpeed > speed ? speed : mobileSpeed;
-    } else if (opt_speed) {
-      this.currentSpeed = opt_speed;
-    }
-  },
-
+  setSpeed: Runner_setSpeed, 
   /**
    * Game initialiser.
    */
