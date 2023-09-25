@@ -31,6 +31,7 @@ import { Runner_setSpeed } from "./setSpeed";
 import { Runner_onkeyup } from "./onKeyUp";
 import { Runner_init } from "./init";
 import { Runner_playIntro } from "./playIntro";
+import { Runner_clearCanvas } from "./clearCanvas";
 
 
 ("use strict");
@@ -228,14 +229,7 @@ Runner.prototype = {
    */
   startGame: Runner_startGame,
 
-  clearCanvas: function () {
-    this.canvasCtx.clearRect(
-      0,
-      0,
-      this.dimensions.WIDTH,
-      this.dimensions.HEIGHT
-    );
-  },
+  clearCanvas: Runner_clearCanvas,
 
   /**
    * Update the game frame and schedules the next one.
