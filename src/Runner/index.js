@@ -24,6 +24,7 @@ import { Runner_onVisibilityChange } from "./onVisibilityChange";
 import { Runner_play } from "./play";
 import { Runner_stop } from "./stop";
 import { Runner_invert } from "./invert";
+import { Runner_loadImages } from "./loadImages";
 
 
 ("use strict");
@@ -172,26 +173,7 @@ Runner.prototype = {
    * Cache the appropriate image sprite from the page and get the sprite sheet
    * definition.
    */
-  loadImages: function () {
-    if (IS_HIDPI) {
-      Runner.imageSprite = document.getElementById("offline-resources-2x");
-      this.spriteDef = Runner.spriteDefinition.HDPI;
-    } else {
-      Runner.imageSprite = document.getElementById("offline-resources-1x");
-      this.spriteDef = Runner.spriteDefinition.LDPI;
-    }
-
-    if (Runner.imageSprite.complete) {
-      this.init();
-    } else {
-      // If the images are not yet loaded, add a listener.
-      Runner.imageSprite.addEventListener(
-        Runner.events.LOAD,
-        this.init.bind(this)
-      );
-    }
-  },
-
+  loadImages: Runner_loadImages, 
   /**
    * Load and decode base 64 encoded sounds.
    */
