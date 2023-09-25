@@ -23,6 +23,7 @@ import { Runner_playSound } from "./playSound";
 import { Runner_onVisibilityChange } from "./onVisibilityChange";
 import { Runner_play } from "./play";
 import { Runner_stop } from "./stop";
+import { Runner_invert } from "./invert";
 
 
 ("use strict");
@@ -632,18 +633,7 @@ Runner.prototype = {
    * Inverts the current page / canvas colors.
    * @param {boolean} Whether to reset colors.
    */
-  invert: function (reset) {
-    if (reset) {
-      document.body.classList.toggle(Runner.classes.INVERTED, false);
-      this.invertTimer = 0;
-      this.inverted = false;
-    } else {
-      this.inverted = document.body.classList.toggle(
-        Runner.classes.INVERTED,
-        this.invertTrigger
-      );
-    }
-  },
+  invert: Runner_invert,
 };
 
 Runner.updateCanvasScaling=Runner_updateCanvasScaling; 
