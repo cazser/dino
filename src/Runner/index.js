@@ -20,6 +20,7 @@ import {Runner_stopListening} from './stopListening';
 import {Runner_onKeyDown} from './onKeyDown';
 import {GameOverPanel} from '../GameOverPanel';
 import { Runner_playSound } from "./playSound";
+import { Runner_onVisibilityChange } from "./onVisibilityChange";
 
 
 ("use strict");
@@ -632,19 +633,7 @@ Runner.prototype = {
   /**
    * Pause the game if the tab is not in focus.
    */
-  onVisibilityChange: function (e) {
-    if (
-      document.hidden ||
-      document.webkitHidden ||
-      e.type == "blur" ||
-      document.visibilityState != "visible"
-    ) {
-      this.stop();
-    } else if (!this.crashed) {
-      this.tRex.reset();
-      this.play();
-    }
-  },
+  onVisibilityChange: Runner_onVisibilityChange,
 
   /**
    * Play a sound.
