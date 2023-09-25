@@ -32,6 +32,7 @@ import { Runner_isLeftClickOnCanvas } from "./isLeftClickOnCanvas";
 import { Runner_update } from "./update";
 import { Runner_deboundResize } from "./deboundResize";
 import { Runner_scheduleNextUpdate } from "./scheduleNextUpdate";
+import { Runner_restart } from "./restart";
 
 
 ("use strict");
@@ -282,25 +283,7 @@ Runner.prototype = {
   stop: Runner_stop,
 
   play: Runner_play, 
-  restart:  function () {
-    if (!this.raqId) {
-      this.playCount++;
-      this.runningTime = 0;
-      this.playing = true;
-      this.crashed = false;
-      this.distanceRan = 0;
-      this.setSpeed(this.config.SPEED);
-      this.time = getTimeStamp();
-      this.containerEl.classList.remove(Runner.classes.CRASHED);
-      this.clearCanvas();
-      this.distanceMeter.reset(this.highestScore);
-      this.horizon.reset();
-      this.tRex.reset();
-      this.playSound(this.soundFx.BUTTON_PRESS);
-      this.invert(true);
-      this.update();
-    }
-  },
+  restart: Runner_restart, 
   /**
    * Pause the game if the tab is not in focus.
    */
